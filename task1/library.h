@@ -13,8 +13,8 @@ class Library {
   //void displayAll();
   void removeBookById(int id);
   double findAveragePrice();
-  Book* findBookWithMaxPages();  
+  int findBookWithMaxPages();  
   Book* findAllBooksByAuthor(std::string);
-	int countall();
+  int countall();
 };
 #endif

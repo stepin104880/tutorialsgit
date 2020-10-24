@@ -2,19 +2,20 @@
 #include "library.h"
 #include<list>
 #include<iterator>
+
 #include<algorithm>
 #include<string>
 #include<numeric>
 
 void Library::addBook(int id, std::string title, std::string author,
   std::string publisher,double price,int pages) {
-  books.push_back(Book(id,title,author,publisher, price,pages)); //Method-2
+  books.push_back(Book(id,title,author,publisher, price,pages)); 
 }
 /*
 void Library::displayAll() {
   std::for_each(books.begin(),books.end(),[=](Book &ref){return ref.display();});
 }
-*/
+
 Book* Library::findBookById(int id) {
   auto var =std::find_if(books.begin(),books.end(),[=] (Book& r1)
 { 
@@ -22,15 +23,18 @@ Book* Library::findBookById(int id) {
 }
 );
            return &(*var);
+           std::cout<<"Error";
 }
+
 void Library::removeBookById(int id) {
 auto var =std::find_if(books.begin(),books.end(),[=] (Book& r1)
 { return (r1.getid()==id);}
 );
     
           books.erase(var);
+          std::cout<<"Error";
 }
-
+*/
 double Library::findAveragePrice() {
 	double avg = accumulate(books.begin(),books.end(),0,[](double rs,Book& r1){return r1.getprice()+rs;});
     	double count=0;
@@ -41,11 +45,11 @@ double Library::findAveragePrice() {
 }
 
 
-Book* Library::findBookWithMaxPages() {
+int Library::findBookWithMaxPages() {
  auto var =std::max_element(books.begin(),books.end(),[=] (Book& r1, Book& r2) 
 { return ( r1.getpages() < r2.getpages());}
 );
-           return &(*var);
+           return var->getpages();
 
 }
 
